@@ -31,6 +31,7 @@ type ResortReport struct {
 	Alerts []any `json:"alerts"`
 }
 
+// this is the response from the API
 type FullBody struct {
 	QueryCost       int     `json:"queryCost"`
 	Latitude        float64 `json:"latitude"`
