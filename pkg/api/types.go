@@ -1,12 +1,23 @@
 package api
 
+// response sent to the frontend
 type RespBody struct {
 	Data []ResortReport `json:"data"`
 }
 
+// db stored version of RespBody. Includes all data.
+type Record struct {
+	Data []FullBody `json:"data"`
+}
+
+// each resorts data within the frontend response
 type ResortReport struct {
-	Description     string `json:"description"`
-	ResolvedAddress string `json:"resolvedAddress"`
+	Latitude        float64 `json:"latitude"`
+	Longitude       float64 `json:"longitude"`
+	Description     string  `json:"description"`
+	ResolvedAddress string  `json:"resolvedAddress"`
+	WebCamUrl       string  `json:"webcamurl"`
+	ForecastUrl     string  `json:"forecasturl"`
 	Days            []struct {
 		Datetime    string  `json:"datetime"`
 		Precip      float64 `json:"precip"`
@@ -41,7 +52,11 @@ type FullBody struct {
 	Timezone        string  `json:"timezone"`
 	Tzoffset        float64 `json:"tzoffset"`
 	Description     string  `json:"description"`
-	Days            []struct {
+	// ADDED MYSELF REVISE
+	WebCamUrl   string `json:"webcamurl"`
+	ForecastUrl string `json:"forecasturl"`
+	//
+	Days []struct {
 		Datetime       string   `json:"datetime"`
 		DatetimeEpoch  int      `json:"datetimeEpoch"`
 		Tempmax        float64  `json:"tempmax"`

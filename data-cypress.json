@@ -2,7 +2,7 @@
   "queryCost": 1,
   "latitude": 49.27084,
   "longitude": -123.14785,
-  "resolvedAddress": "Cypress St, Vancouver, BC V6J, Canada",
+  "resolvedAddress": "Testing Cypress St, Vancouver, BC V6J, Canada",
   "address": "cypress mountain, vancouver",
   "timezone": "America/Vancouver",
   "tzoffset": -8.0,
@@ -10329,7 +10329,7 @@
       ]
     }
   ],
-  "alerts": [],
+  "alerts": ["Ice warning"],
   "stations": {
     "CWWA": {
       "distance": 9116.0,

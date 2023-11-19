@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/go-redis/redis"
 	"github.com/izaakdale/vancouver-conditions-backend/internal/cronjob"
 	"github.com/izaakdale/vancouver-conditions-backend/internal/server"
@@ -10,12 +12,15 @@ import (
 func main() {
 	stub.Run()
 
-	opt, err := redis.ParseURL("redis://localhost:6379")
+	opt, err := redis.ParseURL(os.Getenv("REDIS_URL"))
 	if err != nil {
 		panic(err)
 	}
 	cli := redis.NewClient(opt)
 
-	cronjob.StartAsync()
+	err = cronjob.StartAsync()
+	if err != nil {
+		panic(err)
+	}
 	server.Start(cli)
 }

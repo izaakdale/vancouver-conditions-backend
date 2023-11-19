@@ -12,7 +12,7 @@ import (
 func Run() {
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/stub/whistler", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/whistler-blackcomb-mountain", func(w http.ResponseWriter, r *http.Request) {
 		f, _ := os.Open("./data-whistler.json")
 		bytes, _ := io.ReadAll(f)
 
@@ -22,7 +22,7 @@ func Run() {
 		w.Header().Add("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(fb)
 	})
-	mux.HandleFunc("/stub/seymour", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/seymour-mountain-vancouver", func(w http.ResponseWriter, r *http.Request) {
 		f, _ := os.Open("./data-seymour.json")
 		bytes, _ := io.ReadAll(f)
 
@@ -32,7 +32,7 @@ func Run() {
 		w.Header().Add("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(fb)
 	})
-	mux.HandleFunc("/stub/cypress", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/cypress-mountain-vancouver", func(w http.ResponseWriter, r *http.Request) {
 		f, _ := os.Open("./data-cypress.json")
 		bytes, _ := io.ReadAll(f)
 
