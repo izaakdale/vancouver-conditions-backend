@@ -4,12 +4,12 @@ COPY . ./
 RUN go mod download
 
 
-RUN go build -o /vancouver-snow-conditions
+RUN go build -o /vancouver-conditions-backend
 
 
 FROM alpine
-COPY --from=builder /vancouver-snow-conditions .
+COPY --from=builder /vancouver-conditions-backend .
 
 
 EXPOSE 80
-CMD [ "/vancouver-snow-conditions" ]
+CMD [ "/vancouver-conditions-backend" ]

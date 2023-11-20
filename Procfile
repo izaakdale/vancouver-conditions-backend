@@ -1,1 +1,1 @@
-web: vancouver-snow-conditions
+web: vancouver-conditions-backend
