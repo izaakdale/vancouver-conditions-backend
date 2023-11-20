@@ -14,48 +14,6 @@ import (
 	"github.com/izaakdale/vancouver-conditions-backend/pkg/api"
 )
 
-var searchParams = map[string]additionalData{
-	"whistler-blackcomb-mountain": {
-		title:         "Whistler Blackcomb",
-		webCamUrl:     "https://www.whistlerblackcomb.com/the-mountain/mountain-conditions/mountain-cams.aspx",
-		forecastUrl:   "https://www.snow-forecast.com/resorts/Whistler-Blackcomb/6day/mid",
-		googleMapsUrl: "https://maps.app.goo.gl/7YTvXnCQPS32mxE9A",
-	},
-	"mt-baker-washington": {
-		title:         "Mount Baker",
-		webCamUrl:     "https://www.snowstash.com/usa/washington/mt-baker/snow-cams",
-		forecastUrl:   "https://www.snow-forecast.com/resorts/Mount-Baker/6day/mid",
-		googleMapsUrl: "https://maps.app.goo.gl/gaqSji8YiTb8RacY6",
-	},
-	"20955-hemlock-valley-rd": {
-		title:         "Sasquatch Mountain Resort",
-		webCamUrl:     "https://sasquatchmountain.ca/weather-and-conditions/webcams/",
-		forecastUrl:   "https://www.snow-forecast.com/resorts/HemlockResort/6day/mid",
-		googleMapsUrl: "https://maps.app.goo.gl/o5CWVongU85nwqhT7",
-	},
-	"cypress-mountain-vancouver": {
-		title:         "Cypress Mountain",
-		webCamUrl:     "https://cypressmountain.com/downhill-conditions-and-cams",
-		forecastUrl:   "https://www.snow-forecast.com/resorts/Cypress-Mountain/6day/mid",
-		googleMapsUrl: "https://maps.app.goo.gl/pJkSrmDLMb4RikAd8",
-	},
-	// "seymour-mountain-vancouver": {
-	// 	webCamUrl:   "https://www.youtube.com/watch?v=vLawo-FrBKk",
-	// 	forecastUrl: "https://www.snow-forecast.com/resorts/Mount-Seymour/6day/mid",
-	// },
-	// "grouse-mountain-vancouver": {
-	// 	webCamUrl:   "https://www.grousemountain.com/web-cams",
-	// 	forecastUrl: "https://www.snow-forecast.com/resorts/Grouse-Mountain/6day/mid",
-	// },
-}
-
-type additionalData struct {
-	title         string
-	webCamUrl     string
-	forecastUrl   string
-	googleMapsUrl string
-}
-
 func StartAsync() error {
 	t, err := time.LoadLocation("America/Vancouver")
 	if err != nil {
@@ -66,7 +24,6 @@ func StartAsync() error {
 		fmt.Println("Cron says hello")
 
 		chronOpts, err := redis.ParseURL(os.Getenv("REDIS_URL"))
-
 		if err != nil {
 			log.Printf("error trying to connect to redis\n")
 			return
@@ -90,7 +47,6 @@ func StartAsync() error {
 			a := adds
 			go func() {
 				u := fmt.Sprintf("%s/%s?unitGroup=metric&key=%s&contentType=json", weatherApiEndpoint, p, apiKey)
-				// u := fmt.Sprintf("%s/%s", "http://localhost:9090", p)
 
 				req, err := http.NewRequest(http.MethodGet, u, nil)
 				if err != nil {
