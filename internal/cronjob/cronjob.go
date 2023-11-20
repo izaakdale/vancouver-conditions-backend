@@ -19,7 +19,7 @@ func StartAsync() error {
 		return err
 	}
 	sch := gocron.NewScheduler(t)
-	sch.Cron("* * * * *").Do(func() {
+	sch.Cron("0 */6 * * *").Do(func() {
 		fmt.Println("Cron says hello")
 
 		fmt.Println(os.Getenv("UPSTASH_REDIS_URL"))
