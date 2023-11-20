@@ -42,26 +42,26 @@ func StartAsync() error {
 
 		wg.Add(len(searchParams))
 
-		for path, adds := range searchParams {
-			p := path
+		for searchQuery, adds := range searchParams {
+			s := searchQuery
 			a := adds
 			go func() {
-				u := fmt.Sprintf("%s/%s?unitGroup=metric&key=%s&contentType=json", weatherApiEndpoint, p, apiKey)
+				u := fmt.Sprintf("%s/%s?unitGroup=metric&key=%s&contentType=json", weatherApiEndpoint, s, apiKey)
 
 				req, err := http.NewRequest(http.MethodGet, u, nil)
 				if err != nil {
-					log.Printf("error creating request for %s: %+v\n", p, err)
+					log.Printf("error creating request for %s: %+v\n", s, err)
 					return
 				}
 				resp, err := http.DefaultClient.Do(req)
 				if err != nil {
-					log.Printf("error when fetching data from %s: %+v\n", p, err)
+					log.Printf("error when fetching data from %s: %+v\n", s, err)
 					return
 				}
 				var fb api.FullBody
 				err = json.NewDecoder(resp.Body).Decode(&fb)
 				if err != nil {
-					log.Printf("error decoding response from %s: %+v\n", p, err)
+					log.Printf("error decoding response from %s: %+v\n", s, err)
 					return
 				}
 
