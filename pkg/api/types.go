@@ -19,6 +19,7 @@ type ResortReport struct {
 	WebCamUrl       string  `json:"webcamurl"`
 	ForecastUrl     string  `json:"forecasturl"`
 	Title           string  `json:"title"`
+	GoogleMapsUrl   string  `json:"googlemapsurl"`
 	Days            []struct {
 		Datetime    string  `json:"datetime"`
 		Precip      float64 `json:"precip"`
@@ -67,9 +68,10 @@ type FullBody struct {
 	Tzoffset        float64 `json:"tzoffset"`
 	Description     string  `json:"description"`
 	// ADDED MYSELF REVISE
-	WebCamUrl   string `json:"webcamurl"`
-	ForecastUrl string `json:"forecasturl"`
-	Title       string `json:"title"`
+	WebCamUrl     string `json:"webcamurl"`
+	ForecastUrl   string `json:"forecasturl"`
+	Title         string `json:"title"`
+	GoogleMapsUrl string `json:"googlemapsurl"`
 	//
 	Days []struct {
 		Datetime       string   `json:"datetime"`

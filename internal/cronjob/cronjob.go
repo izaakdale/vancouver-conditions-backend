@@ -16,24 +16,28 @@ import (
 
 var searchParams = map[string]additionalData{
 	"whistler-blackcomb-mountain": {
-		title:       "Whistler Blackcomb",
-		webCamUrl:   "https://www.whistlerblackcomb.com/the-mountain/mountain-conditions/mountain-cams.aspx",
-		forecastUrl: "https://www.snow-forecast.com/resorts/Whistler-Blackcomb/6day/mid",
+		title:         "Whistler Blackcomb",
+		webCamUrl:     "https://www.whistlerblackcomb.com/the-mountain/mountain-conditions/mountain-cams.aspx",
+		forecastUrl:   "https://www.snow-forecast.com/resorts/Whistler-Blackcomb/6day/mid",
+		googleMapsUrl: "https://maps.app.goo.gl/7YTvXnCQPS32mxE9A",
 	},
 	"mt-baker-washington": {
-		title:       "Mount Baker",
-		webCamUrl:   "https://www.snowstash.com/usa/washington/mt-baker/snow-cams",
-		forecastUrl: "https://www.snow-forecast.com/resorts/Mount-Baker/6day/mid",
+		title:         "Mount Baker",
+		webCamUrl:     "https://www.snowstash.com/usa/washington/mt-baker/snow-cams",
+		forecastUrl:   "https://www.snow-forecast.com/resorts/Mount-Baker/6day/mid",
+		googleMapsUrl: "https://maps.app.goo.gl/gaqSji8YiTb8RacY6",
 	},
 	"20955-hemlock-valley-rd": {
-		title:       "Sasquatch Mountain Resort",
-		webCamUrl:   "https://sasquatchmountain.ca/weather-and-conditions/webcams/",
-		forecastUrl: "https://www.snow-forecast.com/resorts/HemlockResort/6day/mid",
+		title:         "Sasquatch Mountain Resort",
+		webCamUrl:     "https://sasquatchmountain.ca/weather-and-conditions/webcams/",
+		forecastUrl:   "https://www.snow-forecast.com/resorts/HemlockResort/6day/mid",
+		googleMapsUrl: "https://maps.app.goo.gl/o5CWVongU85nwqhT7",
 	},
 	"cypress-mountain-vancouver": {
-		title:       "Cypress Mountain",
-		webCamUrl:   "https://cypressmountain.com/downhill-conditions-and-cams",
-		forecastUrl: "https://www.snow-forecast.com/resorts/Cypress-Mountain/6day/mid",
+		title:         "Cypress Mountain",
+		webCamUrl:     "https://cypressmountain.com/downhill-conditions-and-cams",
+		forecastUrl:   "https://www.snow-forecast.com/resorts/Cypress-Mountain/6day/mid",
+		googleMapsUrl: "https://maps.app.goo.gl/pJkSrmDLMb4RikAd8",
 	},
 	// "seymour-mountain-vancouver": {
 	// 	webCamUrl:   "https://www.youtube.com/watch?v=vLawo-FrBKk",
@@ -46,9 +50,10 @@ var searchParams = map[string]additionalData{
 }
 
 type additionalData struct {
-	title       string
-	webCamUrl   string
-	forecastUrl string
+	title         string
+	webCamUrl     string
+	forecastUrl   string
+	googleMapsUrl string
 }
 
 func StartAsync() error {
@@ -107,6 +112,7 @@ func StartAsync() error {
 				fb.ForecastUrl = a.forecastUrl
 				fb.WebCamUrl = a.webCamUrl
 				fb.Title = a.title
+				fb.GoogleMapsUrl = a.googleMapsUrl
 
 				mu.Lock()
 				rec.Data = append(rec.Data, fb)

@@ -3,6 +3,7 @@ package server
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"os"
 
@@ -23,6 +24,32 @@ func Start(cli *redis.Client /*TODO interface*/) {
 
 		var data api.RespBody
 		err = json.Unmarshal(val, &data)
+		if err != nil {
+			panic(err)
+		}
+
+		w.Header().Add("Content-Type", "application/json")
+		err = json.NewEncoder(w).Encode(data)
+		if err != nil {
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
+	})
+
+	mux.HandleFunc("/stub", func(w http.ResponseWriter, r *http.Request) {
+		f, err := os.Open("./composite-data.json")
+		if err != nil {
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
+		bytes, err := io.ReadAll(f)
+		if err != nil {
+			http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+			return
+		}
+
+		var data api.RespBody
+		err = json.Unmarshal(bytes, &data)
 		if err != nil {
 			panic(err)
 		}
