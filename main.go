@@ -12,7 +12,7 @@ import (
 func main() {
 	stub.Run()
 
-	opt, err := redis.ParseURL(os.Getenv("REDIS_URL"))
+	opt, err := redis.ParseURL(os.Getenv("UPSTASH_REDIS_URL"))
 	if err != nil {
 		panic(err)
 	}
