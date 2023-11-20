@@ -18,6 +18,7 @@ type ResortReport struct {
 	ResolvedAddress string  `json:"resolvedAddress"`
 	WebCamUrl       string  `json:"webcamurl"`
 	ForecastUrl     string  `json:"forecasturl"`
+	Title           string  `json:"title"`
 	Days            []struct {
 		Datetime    string  `json:"datetime"`
 		Precip      float64 `json:"precip"`
@@ -39,7 +40,20 @@ type ResortReport struct {
 		Conditions string  `json:"conditions"`
 		Icon       string  `json:"icon"`
 	}
-	Alerts []any `json:"alerts"`
+	Alerts []Alert `json:"alerts"`
+}
+
+type Alert struct {
+	Description string `json:"description"`
+	Ends        string `json:"ends"`
+	EndsEpoch   int    `json:"endsEpoch"`
+	Event       string `json:"event"`
+	Headline    string `json:"headline"`
+	ID          string `json:"id"`
+	Language    string `json:"language"`
+	Link        string `json:"link"`
+	Onset       string `json:"onset"`
+	OnsetEpoch  int    `json:"onsetEpoch"`
 }
 
 // this is the response from the API
@@ -55,6 +69,7 @@ type FullBody struct {
 	// ADDED MYSELF REVISE
 	WebCamUrl   string `json:"webcamurl"`
 	ForecastUrl string `json:"forecasturl"`
+	Title       string `json:"title"`
 	//
 	Days []struct {
 		Datetime       string   `json:"datetime"`
