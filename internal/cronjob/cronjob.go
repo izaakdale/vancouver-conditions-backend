@@ -23,6 +23,7 @@ func StartAsync() error {
 	sch.Cron("0 0 * * *").Do(func() {
 		fmt.Println("Cron says hello")
 
+		fmt.Println(os.Getenv("UPSTASH_REDIS_URL"))
 		chronOpts, err := redis.ParseURL(os.Getenv("UPSTASH_REDIS_URL"))
 		if err != nil {
 			log.Printf("error trying to connect to redis\n")
