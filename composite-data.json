@@ -2,6 +2,11 @@
   "data": [
     {
       "title": "Whistler Blackcomb",
+      "snowfall": {
+        "next_1_days": 0.0,
+        "next_3_days": 0.0,
+        "next_7_days": 0.0
+      },
       "latitude": 50.1134,
       "longitude": -122.95,
       "description": "Similar temperatures continuing with a chance of rain Wednesday & a chance of snow Tuesday.",
@@ -162,6 +167,11 @@
     },
     {
       "title": "Mount Baker",
+      "snowfall": {
+        "next_1_days": 0.0,
+        "next_3_days": 0.0,
+        "next_7_days": 0.0
+      },
       "latitude": 47.5778,
       "longitude": -122.289,
       "description": "Similar temperatures continuing with a chance of rain Tuesday & Wednesday.",
@@ -335,6 +345,11 @@
     },
     {
       "title": "Sasquatch Mountain Resort",
+      "snowfall": {
+        "next_1_days": 1.0,
+        "next_3_days": 2.0,
+        "next_7_days": 3.0
+      },
       "latitude": 49.3787,
       "longitude": -121.934,
       "description": "Similar temperatures continuing with a chance of rain tomorrow, Tuesday & Wednesday.",
@@ -495,6 +510,11 @@
     },
     {
       "title": "Cypress Mountain",
+      "snowfall": {
+        "next_1_days": 1.0,
+        "next_3_days": 2.0,
+        "next_7_days": 3.3
+      },
       "latitude": 49.2708,
       "longitude": -123.148,
       "description": "Similar temperatures continuing with a chance of rain Tuesday & Wednesday.",

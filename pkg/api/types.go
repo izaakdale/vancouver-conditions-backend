@@ -10,6 +10,12 @@ type Record struct {
 	Data []FullBody `json:"data"`
 }
 
+type Snowfall struct {
+	Next1Days float64 `json:"next_1_days"`
+	Next3Days float64 `json:"next_3_days"`
+	Next7Days float64 `json:"next_7_days"`
+}
+
 // each resorts data within the frontend response
 type ResortReport struct {
 	Latitude        float64 `json:"latitude"`
@@ -41,7 +47,8 @@ type ResortReport struct {
 		Conditions string  `json:"conditions"`
 		Icon       string  `json:"icon"`
 	}
-	Alerts []Alert `json:"alerts"`
+	Alerts   []Alert  `json:"alerts"`
+	Snowfall Snowfall `json:"snowfall"`
 }
 
 type Alert struct {
@@ -57,7 +64,7 @@ type Alert struct {
 	OnsetEpoch  int    `json:"onsetEpoch"`
 }
 
-// this is the response from the API
+// this is the response from the API, with some additions
 type FullBody struct {
 	QueryCost       int     `json:"queryCost"`
 	Latitude        float64 `json:"latitude"`
@@ -67,12 +74,15 @@ type FullBody struct {
 	Timezone        string  `json:"timezone"`
 	Tzoffset        float64 `json:"tzoffset"`
 	Description     string  `json:"description"`
-	// ADDED MYSELF REVISE
-	WebCamUrl     string `json:"webcamurl"`
-	ForecastUrl   string `json:"forecasturl"`
-	Title         string `json:"title"`
-	GoogleMapsUrl string `json:"googlemapsurl"`
+
+	// ADDED MYSELF
+	WebCamUrl     string   `json:"webcamurl"`
+	ForecastUrl   string   `json:"forecasturl"`
+	Title         string   `json:"title"`
+	GoogleMapsUrl string   `json:"googlemapsurl"`
+	Snowfall      Snowfall `json:"snowfall"`
 	//
+
 	Days []struct {
 		Datetime       string   `json:"datetime"`
 		DatetimeEpoch  int      `json:"datetimeEpoch"`
